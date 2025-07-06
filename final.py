@@ -12,6 +12,7 @@ def extrair_titulos_paginados(url_base, publisher_alvo):
     """
     offset = 0
     passo = 20
+    offset_maximo = 6260
     resultados = []
     pagina = 1
 
@@ -19,7 +20,7 @@ def extrair_titulos_paginados(url_base, publisher_alvo):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
 
-    while True:
+    while offset <= offset_maximo:
         url = f"{url_base}?offset={offset}"
         print(f"\n➡️ Buscando na página {pagina} (offset={offset})...")
 
@@ -32,7 +33,7 @@ def extrair_titulos_paginados(url_base, publisher_alvo):
             print(f"   → {len(trabalhos)} trabalhos encontrados.")
 
             if not trabalhos:
-                break  # Fim das páginas
+                break  # Fim das páginas ou página vazia
 
             for trabalho in trabalhos:
                 titulo_tag = trabalho.select_one('h4.artifact-title > a')
@@ -67,7 +68,7 @@ def extrair_titulos_paginados(url_base, publisher_alvo):
 
 # --- Execução do Script ---
 if __name__ == "__main__":
-    URL_BASE = "https://repositorio.ifes.edu.br/handle/123456789/100/recent-submissions"
+    URL_BASE = "https://repositorio.ifes.edu.br/recent-submissions"
     PUBLISHER_ALVO = "Alegre"
 
     print(f"Iniciando busca por títulos com publisher '{PUBLISHER_ALVO}'...\n")
@@ -77,11 +78,14 @@ if __name__ == "__main__":
     print(f"\n✅ Total de títulos encontrados com publisher '{PUBLISHER_ALVO}': {total}\n")
 
     if titulos_encontrados:
-        print("--- Lista de Títulos ---")
-        for i, item in enumerate(titulos_encontrados, 1):
-            print(f"{i}. {item['titulo']}")
-            print(f"   Autor: {item['autor']}")
-            print(f"   Data: {item['data']}")
-            print(f"   Página: {item['pagina']} (offset={item['offset']})\n")
+        with open("titulos_extraidos.txt", "w", encoding="utf-8") as arquivo:
+            arquivo.write(f"Total de títulos encontrados com publisher '{PUBLISHER_ALVO}': {total}\n\n")
+            for i, item in enumerate(titulos_encontrados, 1):
+                arquivo.write(f"{i}. {item['titulo']}\n")
+                arquivo.write(f"   Autor: {item['autor']}\n")
+                arquivo.write(f"   Data: {item['data']}\n")
+                arquivo.write(f"   Página: {item['pagina']} (offset={item['offset']})\n\n")
+        
+        print("✅ Dados salvos no arquivo 'titulos_extraidos.txt'.")
     else:
         print("Nenhum título encontrado.")
