@@ -115,3 +115,8 @@ Total de títulos encontrados com publisher 'Alegre': 23
    Data: 2022
    Página: 21 (offset=400)
 
+23. Cronolog: um sistema de gerenciamento da atuação de alunos em atividades de ensino, pesquisa e extensão ﻿
+   Autor: Wernek, Wiris Rafael Januario
+   Data: 2025
+   Página: 1 (offset=0)
+
