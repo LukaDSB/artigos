@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publicações - Publisher Alegre</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #004b23;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .resumo {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #c7f9cc;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+
+    tr:hover {
+      background-color: #e3f2fd;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        position: sticky;
+        top: 0;
+        background-color: #c7f9cc;
+      }
+
+      td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Publicações com Publisher "Alegre"</h1>
+  <h1>Estudante: Lucas de Souza Benevenute</h1>
+</header>
+
+<main>
+
+    <div class="explicacao">
+        <h2>Técnica utilizada</h2>
+    <p>
+      Os dados exibidos nesta página foram extraídos automaticamente do Repositório Institucional do IFES
+      utilizando a técnica de <strong>web scraping</strong> com Python. O processo percorre várias páginas do site 
+      (<code>https://repositorio.ifes.edu.br/...</code>) e coleta as publicações que têm o valor <strong>"Alegre"</strong> 
+      no campo <code>&lt;span class="publisher"&gt;</code>.
+    </p>
+    <p>
+      A cada item encontrado, também são extraídos:
+      <ul>
+        <li><strong>Título:</strong> dentro da tag <code>&lt;a&gt;</code>, filha de <code>&lt;h4 class="artifact-title"&gt;</code>.</li>
+        <li><strong>Autor:</strong> dentro de um <code>&lt;span&gt;</code> sem classe, filho de <code>&lt;span class="author"&gt;</code>.</li>
+        <li><strong>Data:</strong> no <code>&lt;span class="date"&gt;</code>.</li>
+      </ul>
+    </p>
+    <p>
+      A busca continua automaticamente enquanto existirem novas páginas com resultados válidos (offsets múltiplos de 20). O código Python completo pode ser visualizado e baixado abaixo.
+    </p>
+    <h2>Observações;</h2>
+    <p>Além dos dados extraídos, foi observado um erro nas publicações no site oficial do IFES, pois algumas páginas estão com o campo que indica o Campus de publicação duplicado.</p>
+    <p>É o caso por exemplo do artigo 'DESTEFANI: Aplicativo para catálogo e venda de produtos', como se pode notar na imagem abaixo.</p>
+    <img src="/imagemExemplo.png" alt="imagemExemplo">
+  </div>
+
+  <h2>Os dados podem ser observados também no formato de tabela: <a href="
+    https://docs.google.com/spreadsheets/d/e/2PACX-1vSyXp4c2ZwzH-oSzlhmIfaVuH6V6wYj-ixRuoTMeQ_CGbAhkdbBa40kh7LC6e_lTmk7QhZAkpP5kZeU/pubhtml">Acessar tabela!</a ></h2>
+  <h2>Seguem abaixo os dados extraídos.</h2>
+  <div class="resumo">
+    ✅ Total de títulos encontrados: <strong>23</strong>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Data</th>
+        <th>Página</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Gestão eficiente de equipes de futebol amador por meio de um sistema de gerenciamento integrado</td>
+        <td>Louzada, Savionei</td>
+        <td>2025</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Livresse: sistema de gerenciamento e compartilhamento de livros</td>
+        <td>Locatelli, Nathan Ribeiro</td>
+        <td>2025</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>LEVELUP: SISTEMA PARA GERENCIAMENTO DE TRILHAS DE CARREIRA</td>
+        <td>Horsth, Jonata</td>
+        <td>2025</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>SIGMaker: um sistema para agendamento de horários e controle de estoque do LabMaker</td>
+        <td>Broedel, Maria Carolina Altoé</td>
+        <td>2025</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Avaliação de sensores multiespectrais do satélite CBERS 04A no mapeamento da cafeicultura de Ibitirama, ES</td>
+        <td>Carvalho, Arthur Coêlho</td>
+        <td>2025-01-21</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Análise dos índices NDVI e EVI na produtividade de lavouras cafeeiras: um estudo com a plataforma SATVEG</td>
+        <td>Miranda, Iarley Ribeiro</td>
+        <td>2025-02-15</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Otimize-se : aplicativo para gestão e otimização de rotinas de pessoas</td>
+        <td>Godoy, Thiago Diorio</td>
+        <td>2025-01-15</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Dizimais: sistema de gerenciamento e controle de ofertas nas igrejas</td>
+        <td>Maia, Arthur Oliveira</td>
+        <td>2025</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Retrivium: um jogo RPG digital para aulas de história</td>
+        <td>Castellari Neto, Pêdro</td>
+        <td>2025-01-14</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Movimente-se: aplicativo para incentivar a prática de atividades físicas</td>
+        <td>Nazareth, Arthur Saluci de</td>
+        <td>2025-01-14</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>PEAMA Virtual: o mapa interativo da Trilha da Figueira</td>
+        <td>López, Pedro Enrique Neves</td>
+        <td>2025-01</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Connecting Ifes: software para recebimento de informações acadêmicas do Ifes - Campus de Alegre</td>
+        <td>Santos, Marcus Vinícius da Silva</td>
+        <td>2025</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Treks : uma plataforma para descoberta e compartilhamento de viagem</td>
+        <td>Zanetti, Sara</td>
+        <td>2025-02-14</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Wise Future: gestor de finanças</td>
+        <td>Dettmann, Mauricio Saedler</td>
+        <td>2025</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Plataforma integrada de monitoramento climático para agricultura sustentável</td>
+        <td>Passos, Daniel Rovetta</td>
+        <td>2023</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>LibTads: uma plataforma para gerenciar o empréstimo de livros</td>
+        <td>Serafim, Paulo Henrique Lucindo</td>
+        <td>2024</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Sistema de ranqueamento e comparação de preços para livros</td>
+        <td>Serpa Sobrinho, João Pedro</td>
+        <td>2024</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Proposta de ferramenta de suporte e gestão de técnicas de levantamento de requisitos para projetos de software</td>
+        <td>Siqueira, Agnaldo Klein Teixeira de</td>
+        <td>2023-12-11</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Fava: um site para visualização de preços de produtos, cadastro e gerenciamento das contas dos clientes regulares</td>
+        <td>Favaris, Leidiani Leal</td>
+        <td>2023</td>
+        <td>13</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>DESTEFANI: Aplicativo para catálogo e venda de produtos</td>
+        <td>Supeleto, Adriano Fernando Bezerra</td>
+        <td>2022</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>SOPED - Software de gerenciamento de pedidos para lanchonete Kimel de Alegre-ES</td>
+        <td>Jeveaux, Vinicius da Costa</td>
+        <td>2022</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>EVOLOGIC: Aplicativo para ensinar Lógica de Programação</td>
+        <td>Ferreira, Gabriel do Nascimento</td>
+        <td>2022</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>Sistema Web de Cadastro para Associação de Pessoas Portadoras de Deficiência e Emissão de Passe Livre Municipal</td>
+        <td>Cardoso, Emille Martins</td>
+        <td>2022</td>
+        <td>21</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+
+</body>
+</html>
